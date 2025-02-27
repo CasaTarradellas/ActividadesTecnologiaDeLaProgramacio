@@ -58,7 +58,6 @@ int compareDynosaurStrength(Dynosaur dynosaur1, Dynosaur dynosaur2)
 
 Dynosaur createRandomDynosaur()
 {
-
 	Dynosaur dyno;
 
 	switch (rand() % 3)
@@ -83,9 +82,6 @@ Dynosaur createRandomDynosaur()
 			dyno.name = "DIPLODOCUS";
 			dyno.attackPower = 45;
 			break;
-
 	}
-
 	return dyno;
-
 }
