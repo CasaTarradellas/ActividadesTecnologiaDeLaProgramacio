@@ -3,7 +3,7 @@
 #include <time.h>
 #include <math.h>
 #include <string>
-const int NUM_DYNOSAURS = 10;
+
 
 using namespace std;
 
@@ -56,7 +56,36 @@ int compareDynosaurStrength(Dynosaur dynosaur1, Dynosaur dynosaur2)
 	return sameForce;
 }
 
-int createRandomDynosaur()
+Dynosaur createRandomDynosaur()
 {
+
+	Dynosaur dyno;
+
+	switch (rand() % 3)
+	{
+		case 0:
+			dyno.type = DynosaurType::TYRANNOSAURUS;
+			dyno.name = "TYRANNOSAURUS";
+			dyno.attackPower = 100;
+			break;
+		case 1:
+			dyno.type = DynosaurType::VELOCIRAPTOR;
+			dyno.name = "VELOCIRAPTOR";
+			dyno.attackPower = 80;
+			break;
+		case 2:
+			dyno.type = DynosaurType::BRACHIOSAURUS;
+			dyno.name = "BRACHIOSAURUS";
+			dyno.attackPower = 65;
+			break;
+		case 3:
+			dyno.type = DynosaurType::DIPLODOCUS;
+			dyno.name = "DIPLODOCUS";
+			dyno.attackPower = 45;
+			break;
+
+	}
+
+	return dyno;
 
 }

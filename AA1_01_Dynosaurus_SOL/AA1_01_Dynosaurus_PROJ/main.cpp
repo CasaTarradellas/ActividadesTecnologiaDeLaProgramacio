@@ -4,17 +4,59 @@
 #include <string>
 #include "Enemy.h"
 
+#define MAX_DYNOSAURS 15
+
 using namespace std;
 
 void main() 
 {
-    DynosaurType dino1 = DynosaurType::TYRANNOSAURUS;
-    DynosaurType dino2 = DynosaurType::VELOCIRAPTOR;
-    DynosaurType dino3 = DynosaurType::BRACHIOSAURUS;
-    DynosaurType dino4 = DynosaurType::DIPLODOCUS;
+    
+    srand(time(NULL));
 
-    cout << "Dinosaurio 1: " << getDynosaurTypeToString(dino1) << endl;
-    cout << "Dinosaurio 2: " << getDynosaurTypeToString(dino2) << endl;
-    cout << "Dinosaurio 3: " << getDynosaurTypeToString(dino3) << endl;
-    cout << "Dinosaurio 4: " << getDynosaurTypeToString(dino4) << endl;
+    Dynosaur* jurassicPark[MAX_DYNOSAURS];
+
+    for (int i = 0; i < MAX_DYNOSAURS; i++)
+    {
+        if (i % 2 == 0)
+        {
+
+            jurassicPark[i] = new Dynosaur;
+
+            if (i == 0)
+            {
+                *jurassicPark[i] = createRandomDynosaur();
+            }
+            else
+            {
+
+                do
+                {
+                    *jurassicPark[i] = createRandomDynosaur();
+                } while (compareDynosaurStrength(*jurassicPark[i], *jurassicPark[i - 2]));
+                
+            }
+        }
+        else 
+        {
+            jurassicPark[i] = nullptr;
+        }
+        
+        
+
+    }
+
+    for (int i = 0; i < MAX_DYNOSAURS; i++)
+    {
+
+        if (jurassicPark[i] == nullptr)
+        {
+            cout << "No hay Dinosaurio" << endl;
+        }
+        else
+        {
+            cout << jurassicPark[i]->name << endl;
+        }
+
+    }
+
 }
